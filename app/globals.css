@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Updated to corporate color palette: white, gray, orange, black */
+  --background: oklch(1 0 0); /* white */
+  --foreground: oklch(0.2 0 0); /* near black */
+  --card: oklch(1 0 0); /* white */
+  --card-foreground: oklch(0.2 0 0); /* near black */
+  --popover: oklch(1 0 0); /* white */
+  --popover-foreground: oklch(0.2 0 0); /* near black */
+  --primary: oklch(0.65 0.19 45); /* corporate orange */
+  --primary-foreground: oklch(1 0 0); /* white */
+  --secondary: oklch(0.96 0 0); /* light gray */
+  --secondary-foreground: oklch(0.2 0 0); /* near black */
+  --muted: oklch(0.96 0 0); /* light gray */
+  --muted-foreground: oklch(0.5 0 0); /* medium gray */
+  --accent: oklch(0.65 0.19 45); /* corporate orange */
+  --accent-foreground: oklch(1 0 0); /* white */
+  --destructive: oklch(0.577 0.245 27.325); /* red for errors */
+  --destructive-foreground: oklch(1 0 0); /* white */
+  --border: oklch(0.9 0 0); /* light gray border */
+  --input: oklch(0.9 0 0); /* light gray input */
+  --ring: oklch(0.65 0.19 45); /* corporate orange ring */
+  --chart-1: oklch(0.65 0.19 45); /* orange */
+  --chart-2: oklch(0.4 0 0); /* dark gray */
+  --chart-3: oklch(0.7 0 0); /* medium gray */
+  --chart-4: oklch(0.75 0.15 50); /* light orange */
+  --chart-5: oklch(0.3 0 0); /* darker gray */
+  --radius: 0.75rem; /* increased for softer look */
+  --sidebar: oklch(0.98 0 0); /* very light gray */
+  --sidebar-foreground: oklch(0.2 0 0); /* near black */
+  --sidebar-primary: oklch(0.65 0.19 45); /* corporate orange */
+  --sidebar-primary-foreground: oklch(1 0 0); /* white */
+  --sidebar-accent: oklch(0.96 0 0); /* light gray */
+  --sidebar-accent-foreground: oklch(0.2 0 0); /* near black */
+  --sidebar-border: oklch(0.9 0 0); /* light gray border */
+  --sidebar-ring: oklch(0.65 0.19 45); /* corporate orange */
+}
+
+@theme inline {
+  /* Updated theme colors to match corporate palette */
+  --color-background: #ffffff;
+  --color-foreground: #1a1a1a;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a1a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1a1a1a;
+  --color-primary: #f97316; /* corporate orange */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f5f5f5;
+  --color-secondary-foreground: #1a1a1a;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #737373;
+  --color-accent: #f97316; /* corporate orange */
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e5e5e5;
+  --color-input: #e5e5e5;
+  --color-ring: #f97316; /* corporate orange */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Added smooth transitions for better UX */
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    @apply transition-all duration-200;
+  }
+}
+
+/* Added custom animations for loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, #f5f5f5 4%, #e5e5e5 25%, #f5f5f5 36%);
+  background-size: 1000px 100%;
+}
